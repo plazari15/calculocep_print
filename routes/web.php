@@ -13,3 +13,4 @@
 
 $router->get('/', 'calculaCepController@index');
 $router->post('/buscaCep', 'calculaCepController@buscaCep');
+$router->post('/buscaFrete', 'calculaCepController@buscaFrete');

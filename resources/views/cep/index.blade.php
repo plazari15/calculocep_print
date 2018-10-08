@@ -10,16 +10,16 @@
 
     <div class="row">
         <div class="col-md-6">
-            <form>
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="cep">CEP Origem:</label>
-                        <input type="text" name="cep" v-model="origin_zip_code" v-on:blur="buscaCep(origin_zip_code, 'origem')" aria-describedby="cepHelp" placeholder="00000-000">
+                        <input type="text" id="cep" name="cep" v-model="origin_zip_code" v-on:blur="buscaCep(origin_zip_code, 'origem')" aria-describedby="cepHelp" placeholder="00000-000">
                         <small id="emailHelp" class="form-text text-muted">Insira o CEP</small>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="cep">CEP Destino:</label>
-                        <input type="text" name="cep" v-model="destination_zip_code" v-on:blur="buscaCep(destination_zip_code, 'destino')" aria-describedby="cepHelp" placeholder="00000-000">
+                        <input type="text" class="cep" name="cep" v-model="destination_zip_code" v-on:blur="buscaCep(destination_zip_code, 'destino')" aria-describedby="cepHelp" placeholder="00000-000">
                         <small id="emailHelp" class="form-text text-muted">Insira o CEP</small>
                     </div>
                 </div>
@@ -58,12 +58,32 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <button type="submit" class="btn btn-success">Calcular!</button>
+                        <button class="btn btn-success" v-on:click="buscaFretes(); return false;">Calcular!</button>
                     </div>
                 </div>
 
 
-            </form>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Dias para entrega</th>
+                    <th scope="col">Custo (R$)</th>
+                    <th scope="col">Descrição</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="frete in fretes_encontrados">
+                    <th scope="row"><input type="radio" name="frete" v-bind:value="frete.delivery_method_name" v-model="frete_escolhido.delivery_method_name" v-on:click="freteEscolhido(frete)"></th>
+                    <td v-if="frete.mesmodia == true">ENTREGA HOJE</td>
+                    <td v-if="frete.mesmodia == false">${frete.delivery_estimate_business_days} dia(s) úteis</td>
+                    <td>R$ ${frete.final_shipping_cost}</td>
+                    <td>${frete.description}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <button type="submit" name="escolherFrete" v-on:click="btnFretePressed()">Selecionar Frete</button>
         </div>
 
         <div class="col-md-3">
@@ -96,5 +116,4 @@
             </div>
         </div>
     </div>
-    ${message}
     @stop

@@ -16,8 +16,11 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="{{ url('bootstrap4/js/bootstrap.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="{{ url('vueCustom.js?timewe='.date('Ymdhis')) }}"></script>
+<script src="{{ url('vueCustom.js?timewesddsdsd='.date('Ymdhis')) }}"></script>
+<script src="{{ url('jquery.mask.js') }}"></script>
+<script src="{{ url('mascaras.js') }}"></script>
 
 @yield('jspage')
 </html>
