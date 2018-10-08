@@ -12,30 +12,6 @@ volumes:
     driver: local
 
 services:
-  # MySQL (5.7)
-  mysql:
-    image: mysql:5.7
-    container_name: print-mysql
-    volumes:
-    - print-mysql-data:/var/lib/mysql
-    ports:
-    - "3306:3306"
-    environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=print_test
-    - MYSQL_USER=user
-    - MYSQL_PASSWORD=print123
-
-  # Redis
-  cache:
-    image: redis:4.0
-    container_name: print-redis
-    command: --appendonly yes
-    volumes:
-    - print-redis-data:/data
-    ports:
-    - "6379:6379"
-
   # PHP (with Nginx)
   # you can change from nginx to apache, just change session 'image'
   app:
@@ -45,6 +21,3 @@ services:
     - .:/var/www/app
     ports:
     - "80:8080"
-    links:
-    - mysql
-    - cache
