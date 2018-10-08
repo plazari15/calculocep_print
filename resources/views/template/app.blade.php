@@ -17,7 +17,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="{{ url('bootstrap4/js/bootstrap.js') }}"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="{{ url('vueCustom.js') }}"></script>
+<script src="{{ url('vueCustom.js?timewe='.date('Ymdhis')) }}"></script>
 
 @yield('jspage')
 </html>
