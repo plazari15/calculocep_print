@@ -28,16 +28,11 @@ var app = new Vue({
     },
     methods: {
         buscaCep: function (cep, cepType) {
-            alert('iniciado');
             console.log(cep);
             axios.post('/buscaCep', {
                 cep: cep
             }).then(function (response) {
                 var dados = response.data.dados;
-
-                console.log(response.data.dados);
-                console.log(dados);
-                console.log(cepType);
 
                 if(cepType == 'origem'){
                     app.origin_endereco = dados.logradouro;
@@ -52,10 +47,14 @@ var app = new Vue({
                 }
 
             }).catch(function (data) {
-                alert('Infelizmente tivemos um problema com o CEP informado.');
+                console.log('CEP Não encontrado.')
             })
         },
         buscaFretes: function () {
+            if(app.origin_zip_code == app.destination_zip_code){
+                alert('CEP de origem não pode ser igual ao de destino.');
+            }
+
             console.log('iniciando a busca de fretes');
             axios.post('/buscaFrete', {
                 cep_origem: app.origin_zip_code,
@@ -78,7 +77,7 @@ var app = new Vue({
                    }
                 });
             }).catch(function (data) {
-                console.log('tivemos um erro');
+                alert('Tivemos um erro. Verifique os campos preenchidos.');
             });
 
             return false;

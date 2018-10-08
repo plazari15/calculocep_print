@@ -30,31 +30,31 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="cep">Peso:</label>
-                        <input type="text" name="weight" v-model="weight" >
+                        <input type="text" name="weight" v-model="weight" placeholder="0.10">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="cep">Custo dos produtos:</label>
-                        <input type="text" name="cost_of_goods" v-model="cost_of_goods" >
+                        <input type="text" name="cost_of_goods" v-model="cost_of_goods" placeholder="100.00">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="cep">Largura:</label>
-                        <input type="text" name="width​" v-model="width" >
+                        <input type="text" name="width​" v-model="width" placeholder="10">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="cep">Altura:</label>
-                        <input type="text" name="height​" v-model="height" >
+                        <input type="text" name="height​" v-model="height" placeholder="10">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="cep">Comprimento:</label>
-                        <input type="text" name="length​" v-model="length" >
+                        <input type="text" name="length​" v-model="length" placeholder="25">
                     </div>
 
                     <div class="form-group col-md-6">
