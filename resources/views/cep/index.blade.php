@@ -63,27 +63,30 @@
                 </div>
 
 
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Dias para entrega</th>
-                    <th scope="col">Custo (R$)</th>
-                    <th scope="col">Descrição</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="frete in fretes_encontrados">
-                    <th scope="row"><input type="radio" name="frete" v-bind:value="frete.delivery_method_name" v-model="frete_escolhido.delivery_method_name" v-on:click="freteEscolhido(frete)"></th>
-                    <td v-if="frete.mesmodia == true">ENTREGA HOJE</td>
-                    <td v-if="frete.mesmodia == false">${frete.delivery_estimate_business_days} dia(s) úteis</td>
-                    <td>R$ ${frete.final_shipping_cost}</td>
-                    <td>${frete.description}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div v-if="fretes_encontrados.length > 0">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Dias para entrega</th>
+                        <th scope="col">Custo (R$)</th>
+                        <th scope="col">Descrição</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="frete in fretes_encontrados">
+                        <th scope="row"><input type="radio" name="frete" v-bind:value="frete.delivery_method_name" v-model="frete_escolhido.delivery_method_name" v-on:click="freteEscolhido(frete)"></th>
+                        <td v-if="frete.mesmodia == true">ENTREGA HOJE</td>
+                        <td v-if="frete.mesmodia == false">${frete.delivery_estimate_business_days} dia(s) úteis</td>
+                        <td>R$ ${frete.final_shipping_cost}</td>
+                        <td>${frete.description}</td>
+                    </tr>
+                    </tbody>
+                </table>
 
-            <button type="submit" name="escolherFrete" v-on:click="btnFretePressed()">Selecionar Frete</button>
+                <button type="submit" name="escolherFrete" class="btn btn-success" v-on:click="btnFretePressed()">Selecionar Frete</button>
+            </div>
+
         </div>
 
         <div class="col-md-3">
